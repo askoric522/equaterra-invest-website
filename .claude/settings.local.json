@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx -y puppeteer screenshot index.html --full-page --output=screenshot.png)",
+      "Bash(node screenshot.js)",
+      "Bash(npx puppeteer *)",
+      "Bash(node node_modules/puppeteer/install.mjs)",
+      "Bash(npm install *)",
+      "Bash(node make-logo.js)",
+      "Bash(node -e ' *)",
+      "Bash(node screenshot-section.js)",
+      "Bash(node fix-session.js)"
+    ]
+  }
+}
