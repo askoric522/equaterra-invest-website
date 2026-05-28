@@ -32,7 +32,7 @@
   .hero-bg {
     background:
       linear-gradient(to right, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.78) 25%, rgba(13,27,42,0.30) 55%, rgba(13,27,42,0) 85%) no-repeat,
-      url('Spoljni izgled zgrade.jpg') right center / contain no-repeat,
+      url('Spoljni izgled finish.jpeg') right center / contain no-repeat,
       #0d1b2a;
     min-height: 820px;
   }
@@ -42,7 +42,7 @@
 
   <!-- HEADER -->
   <header class="hero-bg">
-    <div class="max-w-[1280px] mx-auto px-10 pt-7">
+    <div class="max-w-[1280px] mx-auto px-10 pt-7 relative">
       <nav class="flex items-center justify-between">
         <!-- Logo -->
         <a href="#" class="flex items-center gap-3">
@@ -57,17 +57,61 @@
         <ul class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.18em] font-medium">
           <li><a href="#" class="text-gold">POČETNA</a></li>
           <li><a href="#projekti" class="text-white/90 hover:text-gold">PROJEKTI</a></li>
-          <li><a href="#" class="text-white/90 hover:text-gold">STANOVI</a></li>
-          <li><a href="o-nama.html" class="text-white/90 hover:text-gold">O NAMA</a></li>
+          <li><a href="stanovi.html" class="text-white/90 hover:text-gold">STANOVI</a></li>
+          <li><a href="o-nama.html" class="text-white/90 hover:text-gold whitespace-nowrap">O NAMA</a></li>
           <li><a href="kontakt.html" class="text-white/90 hover:text-gold">KONTAKT</a></li>
         </ul>
 
-        <!-- CTA -->
-        <a href="#" class="bg-gold hover:bg-gold-light text-white text-[12px] tracking-[0.18em] font-semibold px-7 py-4">
+        <!-- Hamburger button (visible on small screens) -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-gold p-2" aria-label="Toggle menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <!-- Spacer (keeps nav items in same position on desktop) -->
+        <div class="hidden lg:block invisible text-[12px] tracking-[0.18em] font-semibold px-7 py-4">
           ZAKAŽITE RAZGOVOR
-        </a>
+        </div>
       </nav>
+
+      <!-- Mobile fullscreen menu (hidden by default) -->
+      <div id="mobileMenu" class="hidden lg:hidden fixed inset-0 z-50 bg-cream/95 backdrop-blur-xl">
+        <div class="flex flex-col h-full">
+          <div class="flex justify-end p-7">
+            <button onclick="toggleMobileMenu()" class="text-gold p-2" aria-label="Close menu">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+          <div class="flex-1 flex items-center justify-center">
+            <ul class="flex flex-col gap-8 text-center tracking-[0.2em]">
+              <li><a href="#" class="font-sans text-gold text-[20px] tracking-[0.18em] font-medium">POČETNA</a></li>
+              <li><a href="#projekti" class="font-sans text-dark text-[20px] tracking-[0.18em] font-medium hover:text-gold transition-colors duration-300">PROJEKTI</a></li>
+              <li><a href="stanovi.html" class="font-sans text-dark text-[20px] tracking-[0.18em] font-medium hover:text-gold transition-colors duration-300">STANOVI</a></li>
+              <li><a href="o-nama.html" class="font-sans text-dark text-[20px] tracking-[0.18em] font-medium hover:text-gold transition-colors duration-300">O NAMA</a></li>
+              <li><a href="kontakt.html" class="font-sans text-dark text-[20px] tracking-[0.18em] font-medium hover:text-gold transition-colors duration-300">KONTAKT</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+      }
+      document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mobileMenu').classList.add('hidden');
+        });
+      });
+    </script>
 
     <!-- HERO content -->
     <div class="max-w-[1280px] mx-auto px-10 pt-28 pb-36">
@@ -87,7 +131,7 @@
       </a>
 
       <div class="mt-12">
-        <a href="#" class="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] text-white/80 border-b border-white/30 pb-2">
+        <a href="stanovi.html#dostupni-stanovi" class="inline-flex items-center gap-3 text-[11px] tracking-[0.3em] text-white/80 border-b border-white/30 pb-2">
           SAZNAJTE VIŠE
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
@@ -161,7 +205,7 @@
         <div class="md:col-span-7 aspect-[4/3] bg-cover bg-center" style="background-image:url('Nova slika.jpeg')"></div>
         <div class="md:col-span-5">
           <div class="text-gold text-[11px] tracking-[0.3em] font-semibold">IZDVOJENI PROJEKAT</div>
-          <h3 class="font-serif text-white text-[40px] leading-[1.1] mt-4" style="font-variant-numeric: lining-nums; font-feature-settings: 'lnum';">Prvomajska 10, Telep</h3>
+          <h3 class="font-serif text-white text-[40px] leading-[1.1] mt-4" style="font-variant-numeric: lining-nums; font-feature-settings: 'lnum';">Ćirila i Metodija 129, Telep</h3>
           <div class="w-12 h-px bg-gold mt-5"></div>
           <div class="flex items-center gap-2 text-gold text-[14px] mt-6">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22 C12 22 5 14 5 9 a7 7 0 0 1 14 0 C19 14 12 22 12 22 Z"/><circle cx="12" cy="9" r="2"/></svg>
@@ -174,19 +218,19 @@
           </p>
           <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-white/10">
             <div>
-              <div class="text-gold font-serif text-[26px] leading-none">10</div>
+              <div class="text-gold font-sans text-[20px] font-normal leading-none">14</div>
               <div class="text-white/60 text-[11px] tracking-[0.15em] mt-2">STANOVA</div>
             </div>
             <div>
-              <div class="text-gold font-serif text-[26px] leading-none">2–4</div>
+              <div class="text-gold font-sans text-[20px] font-normal leading-none">1–4</div>
               <div class="text-white/60 text-[11px] tracking-[0.15em] mt-2">SOBE</div>
             </div>
             <div>
-              <div class="text-gold font-serif text-[26px] leading-none">46–120</div>
+              <div class="text-gold font-sans text-[20px] font-normal leading-none">26–98</div>
               <div class="text-white/60 text-[11px] tracking-[0.15em] mt-2">m²</div>
             </div>
           </div>
-          <a href="#" class="inline-flex items-center gap-10 bg-gold hover:bg-gold-light text-white text-[12px] tracking-[0.18em] font-semibold px-8 py-5 mt-9">
+          <a href="stanovi.html#dostupni-stanovi" class="inline-flex items-center gap-10 bg-gold hover:bg-gold-light text-white text-[12px] tracking-[0.18em] font-semibold px-8 py-5 mt-9">
             SAZNAJTE VIŠE
             <span class="text-base">→</span>
           </a>
@@ -206,7 +250,7 @@
           Pošaljite upit i dobićete informacije o dostupnim stanovima,<br/>
           cenama, rokovima završetka i mogućnostima plaćanja.
         </p>
-        <a href="#" class="inline-flex items-center gap-10 bg-gold hover:bg-gold-light text-white text-[12px] tracking-[0.18em] font-semibold px-8 py-5 mt-8">
+        <a href="kontakt.html#contact-split" class="inline-flex items-center gap-10 bg-gold hover:bg-gold-light text-white text-[12px] tracking-[0.18em] font-semibold px-8 py-5 mt-8">
           POŠALJITE UPIT
           <span class="text-base">→</span>
         </a>
@@ -253,20 +297,20 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <a href="tel:+381600000000" class="hover:text-gold">+381 60 000 0000</a>
+            <a href="tel:+38169797494" class="hover:text-gold">+381 69 797 494</a>
           </li>
           <li class="flex items-center gap-3">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <a href="tel:+381610000000" class="hover:text-gold">+381 61 000 0000</a>
+            <a href="tel:+381628239604" class="hover:text-gold">+381 62 823 9604</a>
           </li>
           <li class="flex items-center gap-3">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 6-10 7L2 6"/>
             </svg>
-            <a href="mailto:info@equaterra.rs" class="hover:text-gold">info@equaterra.rs</a>
+            <a href="mailto:equatterainvest@gmail.com" class="hover:text-gold">equatterainvest@gmail.com</a>
           </li>
         </ul>
       </div>
@@ -283,14 +327,6 @@
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
               </svg>
               Instagram
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center gap-3 hover:text-gold">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-              Facebook
             </a>
           </li>
         </ul>
