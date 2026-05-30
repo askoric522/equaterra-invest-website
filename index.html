@@ -30,11 +30,23 @@
   body { font-family: 'Inter', sans-serif; }
   .font-serif { font-family: 'Cormorant Garamond', serif; }
   .hero-bg {
-    background:
-      linear-gradient(to right, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.78) 25%, rgba(13,27,42,0.30) 55%, rgba(13,27,42,0) 85%) no-repeat,
-      url('Spoljni izgled finish.jpeg') right center / cover no-repeat,
-      #0d1b2a;
+    background-color: #0d1b2a;
+    background-image:
+      linear-gradient(to right, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.78) 25%, rgba(13,27,42,0.30) 55%, rgba(13,27,42,0) 85%),
+      url('Spoljni izgled finish.jpeg');
+    background-position: 0 0, right center;
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat, no-repeat;
     min-height: 820px;
+  }
+  @media (max-width: 768px) {
+    .hero-bg {
+      background-image:
+        linear-gradient(to bottom, rgba(13,27,42,0) 0%, rgba(13,27,42,0.4) 35%, rgba(13,27,42,0.9) 75%, rgba(13,27,42,0.97) 100%),
+        url('Spoljni izgled finish.jpeg');
+      background-position: 0 0, center top;
+      background-size: 100% 100%, 100% auto;
+    }
   }
 </style>
 </head>
