@@ -31,9 +31,26 @@
   .font-serif { font-family: 'Cormorant Garamond', serif; }
   .hero-bg {
     background:
-      linear-gradient(to right, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.78) 25%, rgba(13,27,42,0.30) 55%, rgba(13,27,42,0) 85%) no-repeat,
+      linear-gradient(to right, rgba(13,27,42,0.55) 0%, rgba(13,27,42,0.3) 35%, rgba(13,27,42,0) 65%) no-repeat,
       url('Spoljni izgled finish.jpeg') right center / cover no-repeat,
       #0d1b2a;
+    position: relative;
+    isolation: isolate;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(13,27,42,0.9) 0%, rgba(13,27,42,0.6) 55%, rgba(13,27,42,0) 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .hero-text-shadow { text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 2px 14px rgba(0,0,0,0.8), 0 0 36px rgba(0,0,0,0.5); }
+  @media (hover: hover) {
+    .no-click-desktop { pointer-events: none; cursor: default; }
   }
 </style>
 </head>
@@ -109,11 +126,11 @@
 
     <!-- Hero content -->
     <div class="max-w-[1280px] mx-auto px-4 md:px-10 pt-24 pb-32">
-      <h1 class="font-serif text-white leading-[1.05] max-w-2xl">
+      <h1 class="font-serif text-white leading-[1.05] max-w-2xl hero-text-shadow">
         <span class="block text-[56px] font-medium">Gradimo prostore</span>
         <span class="block text-[56px] italic text-gold font-medium">za miran i savremen život.</span>
       </h1>
-      <p class="mt-8 text-white/80 text-[15px] leading-relaxed max-w-xl font-light">
+      <p class="mt-8 text-white/80 text-[15px] leading-relaxed max-w-xl font-light hero-text-shadow">
         Equaterra Invest je nova investitorska kompanija posvećena izgradnji urbanih
         objekata sa pažljivim rasporedima, kvalitetnim materijalima i lokacijama
         koje brzo postaju omiljene.
@@ -131,12 +148,12 @@
         <div class="w-[56px] h-[2px] bg-gold mt-5"></div>
         <div class="mt-6 space-y-5 text-dark/75 text-[15px] leading-[1.8]">
           <p>
-            Equaterra Invest je osnovana sa idejom da gradnja može — i mora — biti drugačija.
+            Equaterra Invest je osnovana sa idejom da gradnja može i mora biti drugačija.
             Manje stanara po objektu, više pažnje po stanu, i lokacije koje pružaju mir, a
             zadržavaju blizinu svega što grad nudi.
           </p>
           <p>
-            Naš pristup je lični. Svaku odluku donosimo kao da biramo dom za sebe —
+            Naš pristup je lični. Svaku odluku donosimo kao da biramo dom za sebe,
             jer verujemo da je to jedini način da napravimo prostor u kojem se neko zaista
             može osećati kao kod kuće.
           </p>
@@ -277,7 +294,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <a href="tel:+38169797494" class="hover:text-gold">+381 69 797 494</a>
+            <a href="tel:+38169797494" class="no-click-desktop">+381 69 797 494</a>
           </li>
           <li class="flex items-center gap-3">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#b8935a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -291,7 +308,7 @@
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 6-10 7L2 6"/>
             </svg>
-            <a href="mailto:equaterrainvest@gmail.com" class="hover:text-gold">equaterrainvest@gmail.com</a>
+            <a href="mailto:equaterrainvest@gmail.com" class="no-click-desktop">equaterrainvest@gmail.com</a>
           </li>
         </ul>
       </div>
